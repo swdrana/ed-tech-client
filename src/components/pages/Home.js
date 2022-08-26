@@ -1,10 +1,14 @@
 import React from 'react';
-import Header from './home/Header';
+import Banner from './home/Banner';
+import HeroSection from './home/HeroSection';
+import Navber from './home/Navber';
 
 const Home = () => {
     return (
         <div>
-            <Header/>
+            <Navber/>
+            <Banner/>
+            <HeroSection/>
             Home
         </div>
     );
