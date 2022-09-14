@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Navber = () => {
   return (
-    <div>
+    <div className="container mx-auto">
       <div class="navbar bg-base-100">
         <div class="navbar-start">
           <Link to={"/"} class="btn btn-ghost normal-case text-xl">
