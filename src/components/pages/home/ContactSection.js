@@ -1,5 +1,5 @@
 import React from "react";
-import contactUs from '../../../assets/img/Contact us.gif';
+import contactUs from "../../../assets/img/Contact us.gif";
 const ContactSection = () => {
   return (
     <div>
@@ -9,25 +9,19 @@ const ContactSection = () => {
             <h2 className="text-4xl font-bold leading-tight lg:text-5xl">
               Let's talk!
             </h2>
-            <div className="text-gray-500">
-            Be the ultimate trendsetter.
-            </div>
+            <div className="text-gray-500">Be the ultimate trendsetter.</div>
           </div>
-          <img
-            src={contactUs}
-            alt=""
-            className=""
-          />
+          <img src={contactUs} alt="" className="" />
         </div>
         <form
-          novalidate=""
+          noValidate=""
           className="space-y-6 ng-untouched ng-pristine ng-valid"
-          onSubmit={(e)=>{
+          onSubmit={(e) => {
             e.preventDefault();
           }}
         >
           <div>
-            <label for="name" className="text-sm">
+            <label htmlFor="name" className="text-sm">
               Full name
             </label>
             <input
@@ -38,7 +32,7 @@ const ContactSection = () => {
             />
           </div>
           <div>
-            <label for="email" className="text-sm">
+            <label htmlFor="email" className="text-sm">
               Email
             </label>
             <input
@@ -48,7 +42,7 @@ const ContactSection = () => {
             />
           </div>
           <div>
-            <label for="message" className="text-sm">
+            <label htmlFor="message" className="text-sm">
               Message
             </label>
             <textarea
