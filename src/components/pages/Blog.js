@@ -1,13 +1,7 @@
-import React from 'react';
-import Navber from './home/Navber';
+import React from "react";
 
 const Blog = () => {
-    return (
-        <div>
-            <Navber/>
-            Blog
-        </div>
-    );
+  return <div>Blog</div>;
 };
 
 export default Blog;

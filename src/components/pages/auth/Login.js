@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Navber from "../home/Navber";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "./firebase.init";
 const Login = () => {
@@ -10,16 +9,13 @@ const Login = () => {
   const handelGoogleSignIn = () => {
     signInWithGoogle();
   };
-  if(loadingGoogle){
-
-  }else if(user){
+  if (loadingGoogle) {
+  } else if (user) {
     console.log(user);
-    navigate('/');
+    navigate("/");
   }
   return (
     <>
-      <Navber />
-
       <div className="flex justify-center items-center">
         <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
           <h1 className="text-2xl font-bold text-center">Login</h1>
