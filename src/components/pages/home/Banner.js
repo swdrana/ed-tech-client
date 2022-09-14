@@ -35,18 +35,18 @@ const Banner = () => {
                 Good Footing for Good Life. &nbsp;
                 <br className="hidden md:inline lg:hidden" />
                 Our shoe store brings through the luxury of all the basics your
-                feet can have.
+                feet can have. We provide your feet with comfort in every way.
               </p>
               <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
                 <Link
                   className="px-8 py-3 text-lg font-semibold border rounded  border-red-600 hover:border-transparent text-red-600 hover:text-stone-600"
-                  to={'/'}
+                  to={'/about'}
                 >
                   About Us
                 </Link>
                 <Link
                   className="px-8 py-3 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900 hover:text-red-600  hover:border border-red-600"
-                  to={'/'}
+                  to={'/manage-items'}
                 >
                   Explorer Now
                 </Link>
