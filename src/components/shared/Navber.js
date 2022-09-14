@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
-import auth from "../pages/auth/firebase.init";
+import auth from "../../pages/auth/firebase.init";
 const Navber = () => {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
@@ -46,6 +46,13 @@ const Navber = () => {
           </div>
           <div className="hidden lg:flex">
             <ul className="menu menu-horizontal p-0">
+            {user ? (
+                <li>
+                  <Link to={"/add-item"}>Add Item</Link>
+                </li>
+              ) : (
+                ""
+              )}
               <li>
                 <Link to={"/blog"}>Blog</Link>
               </li>

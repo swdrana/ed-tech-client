@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import About from "./components/pages/About";
-import Login from "./components/pages/auth/Login";
-import Signup from "./components/pages/auth/Signup";
-import Blog from "./components/pages/Blog";
-import Home from "./components/pages/Home";
+import About from "./pages/about/About";
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
+import Blog from "./pages/blog/Blog";
 import Footer from "./components/shared/Footer";
 import Navber from "./components/shared/Navber";
+import AddItem from "./pages/addItem/AddItem";
+import Home from "./pages/home/Home";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Navber />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/add-item" element={<AddItem />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="/blog" element={<Blog />} />
