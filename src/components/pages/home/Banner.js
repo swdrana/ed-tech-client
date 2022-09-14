@@ -37,22 +37,22 @@ const Banner = () => {
                 Our shoe store brings through the luxury of all the basics your
                 feet can have. We provide your feet with comfort in every way.
               </p>
-              <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+              <div className="flex flex-col space-y-4 sm:Items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
                 <Link
                   className="px-8 py-3 text-lg font-semibold border rounded  border-red-600 hover:border-transparent text-red-600 hover:text-stone-600"
-                  to={'/about'}
+                  to={"/about"}
                 >
                   About Us
                 </Link>
                 <Link
                   className="px-8 py-3 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900 hover:text-red-600  hover:border border-red-600"
-                  to={'/manage-items'}
+                  to={"/manage-Items"}
                 >
                   Explorer Now
                 </Link>
               </div>
             </div>
-            <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+            <div className="flex Items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
               <img
                 src={shoe}
                 alt=""
@@ -94,7 +94,7 @@ const Banner = () => {
             </h2>
             <div className="divide-y divide-gray-700">
               <div className="grid justify-center grid-cols-4 p-8 mx-auto space-y-8 lg:space-y-0">
-                <div className="flex items-center justify-center lg:col-span-1 col-span-full">
+                <div className="flex Items-center justify-center lg:col-span-1 col-span-full">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
@@ -124,7 +124,7 @@ const Banner = () => {
                 </div>
               </div>
               <div className="grid justify-center grid-cols-4 p-8 mx-auto space-y-8 lg:space-y-0">
-                <div className="flex items-center justify-center lg:col-span-1 col-span-full">
+                <div className="flex Items-center justify-center lg:col-span-1 col-span-full">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
@@ -153,7 +153,7 @@ const Banner = () => {
                 </div>
               </div>
               <div className="grid justify-center grid-cols-4 p-8 mx-auto space-y-8 lg:space-y-0">
-                <div className="flex items-center justify-center lg:col-span-1 col-span-full">
+                <div className="flex Items-center justify-center lg:col-span-1 col-span-full">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
@@ -182,7 +182,7 @@ const Banner = () => {
                 </div>
               </div>
               <div className="grid justify-center grid-cols-4 p-8 mx-auto space-y-8 lg:space-y-0">
-                <div className="flex items-center justify-center lg:col-span-1 col-span-full">
+                <div className="flex Items-center justify-center lg:col-span-1 col-span-full">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
@@ -599,7 +599,7 @@ const Banner = () => {
           </div>
         </section> */}
         {/* <section className="py-8 dark:bg-gray-800 dark:text-gray-100">
-          <div className="container flex flex-col items-center p-4 mx-auto space-y-6 md:p-8 read-aloud">
+          <div className="container flex flex-col Items-center p-4 mx-auto space-y-6 md:p-8 read-aloud">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
@@ -627,7 +627,7 @@ const Banner = () => {
                   Founder, Company
                 </p>
                 <a
-                  className="flex items-center py-2 space-x-1 text-sm dark:text-violet-400"
+                  className="flex Items-center py-2 space-x-1 text-sm dark:text-violet-400"
                   href="/"
                 >
                   <span>Read full story</span>
@@ -786,7 +786,7 @@ const Banner = () => {
                   href="#"
                   className="flex justify-center space-x-3 md:justify-start"
                 >
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-400">
+                  <div className="flex Items-center justify-center w-12 h-12 rounded-full dark:bg-violet-400">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 32 32"
@@ -968,7 +968,7 @@ const Banner = () => {
                 <a
                   rel="noopener noreferrer"
                   href="#"
-                  className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900"
+                  className="flex Items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -985,7 +985,7 @@ const Banner = () => {
                 <a
                   rel="noopener noreferrer"
                   href="#"
-                  className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900"
+                  className="flex Items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -1001,7 +1001,7 @@ const Banner = () => {
                 <a
                   rel="noopener noreferrer"
                   href="#"
-                  className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900"
+                  className="flex Items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -4,7 +4,7 @@ import Login from "./components/pages/auth/Login";
 import Signup from "./components/pages/auth/Signup";
 import Blog from "./components/pages/Blog";
 import Home from "./components/pages/Home";
-import Fotter from "./components/shared/Fotter";
+import Footer from "./components/shared/Footer";
 import Navber from "./components/shared/Navber";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
       </Routes>
-      <Fotter/>
+      <Footer />
     </div>
   );
 }

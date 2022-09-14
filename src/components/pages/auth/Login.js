@@ -16,7 +16,7 @@ const Login = () => {
   }
   return (
     <>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center Items-center">
         <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
           <h1 className="text-2xl font-bold text-center">Login</h1>
           <form
@@ -55,7 +55,7 @@ const Login = () => {
               Sign in
             </button>
           </form>
-          <div className="flex items-center pt-4 space-x-1">
+          <div className="flex Items-center pt-4 space-x-1">
             <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
             <p className="px-3 text-sm dark:text-gray-400">
               Login with social accounts

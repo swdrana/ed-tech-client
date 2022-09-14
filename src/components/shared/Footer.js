@@ -1,6 +1,6 @@
 import React from "react";
 
-const Fotter = () => {
+const Footer = () => {
   return (
     <div>
       <footer className="px-4 divide-y dark:bg-gray-800 dark:text-gray-100">
@@ -11,7 +11,7 @@ const Fotter = () => {
               href="#"
               className="flex justify-center space-x-3 lg:justify-start"
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-indigo-400">
+              <div className="flex Items-center justify-center w-12 h-12 rounded-full dark:bg-indigo-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 32 32"
@@ -98,7 +98,7 @@ const Fotter = () => {
                   rel="noopener noreferrer"
                   href="#"
                   title="Facebook"
-                  className="flex items-center p-1"
+                  className="flex Items-center p-1"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +113,7 @@ const Fotter = () => {
                   rel="noopener noreferrer"
                   href="#"
                   title="Twitter"
-                  className="flex items-center p-1"
+                  className="flex Items-center p-1"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -127,7 +127,7 @@ const Fotter = () => {
                   rel="noopener noreferrer"
                   href="#"
                   title="Instagram"
-                  className="flex items-center p-1"
+                  className="flex Items-center p-1"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -150,4 +150,4 @@ const Fotter = () => {
   );
 };
 
-export default Fotter;
+export default Footer;
