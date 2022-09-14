@@ -72,7 +72,7 @@ const AddItem = () => {
             <input
               type="submit"
               value="Add"
-              className=" btn btn-success w-52"
+              className=" btn btn-warning w-52"
             />
           </div>
         </form>

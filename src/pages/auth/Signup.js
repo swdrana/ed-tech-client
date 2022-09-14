@@ -4,6 +4,7 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
+import Loading from "../../components/shared/Loading";
 import auth from "./firebase.init";
 
 const Signup = () => {
@@ -16,7 +17,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   if (loading || loadingGoogle) {
-    return <p>Loading</p>;
+    return <Loading/>;
   } else if (error || errorGoogle) {
     return <p>{error?.message || errorGoogle?.message}</p>;
   } else if (user || userGoogle) {

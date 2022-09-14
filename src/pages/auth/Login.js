@@ -7,6 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "./firebase.init";
 import { useState } from "react";
+import Loading from "../../components/shared/Loading";
 const Login = () => {
   const navigate = useNavigate();
   const [signInWithGoogle, userGoogle, loadingGoogle, errorGoogle] =
@@ -19,15 +20,16 @@ const Login = () => {
   const handelGoogleSignIn = () => {
     signInWithGoogle();
   };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   if (loading || loadingGoogle || sending) {
+    return <Loading/>
   } else if (errorGoogle || error || errorReset) {
     console.error(errorGoogle?.message || error?.message || errorReset.message);
   } else if (user || userGoogle) {
     console.log(user);
     navigate("/");
   }
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const handelSubmit = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password);
