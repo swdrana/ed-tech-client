@@ -1,6 +1,11 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 
 const AddItem = () => {
+  const { register, handleSubmit, error } = useForm();
+  const submit = (data) => {
+    console.log(data);
+  };
   return (
     <div>
       <h2 className="text-3xl text-center">Add Product</h2>
@@ -8,11 +13,15 @@ const AddItem = () => {
         Please fill this form carefully
       </p>
       <section className="p-6 dark:bg-gray-800 dark:text-gray-50">
-        <form className="container mx-auto space-x-0 ng-untouched ng-pristine ng-valid">
+        <form
+          className="container mx-auto space-x-0 ng-untouched ng-pristine ng-valid"
+          onSubmit={handleSubmit(submit)}
+        >
           <div className="flex flex-col lg:flex-row  lg:space-x-10 space-y-10 lg:space-y-0">
             <fieldset className="p-6 lg:w-1/2 w-full border border-dashed rounded-md shadow-md dark:bg-gray-900">
               <div className="col-span-full">
                 <input
+                  {...register("photoURL")}
                   type="file"
                   placeholder=""
                   className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-indigo-400 border border-gray-400 dark:text-gray-900"
@@ -29,6 +38,7 @@ const AddItem = () => {
             <fieldset className="p-6 lg:w-1/2 w-full border border-dashed rounded-md shadow-md dark:bg-gray-900 space-y-5">
               <div className="col-span-full">
                 <input
+                  {...register("productName")}
                   id="product-name"
                   type="text"
                   placeholder="Product Name"
@@ -37,6 +47,7 @@ const AddItem = () => {
               </div>
               <div className="col-span-full flex space-x-5">
                 <input
+                  {...register("quantity")}
                   id="quantity"
                   type="number"
                   placeholder="Quantity"
@@ -44,6 +55,7 @@ const AddItem = () => {
                 />
                 <input
                   id="price"
+                  {...register("price")}
                   type="number"
                   placeholder="Price"
                   className="w-full p-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-indigo-400 border border-gray-400 dark:text-gray-900"
@@ -52,6 +64,7 @@ const AddItem = () => {
               <div className="col-span-full">
                 <input
                   id="supplier"
+                  {...register("supplier")}
                   type="text"
                   placeholder="Supplier Name"
                   className="w-full p-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-indigo-400 border border-gray-400 dark:text-gray-500"
@@ -60,6 +73,7 @@ const AddItem = () => {
               <div className="col-span-full">
                 <textarea
                   id="description"
+                  {...register('description')}
                   type="text"
                   placeholder="Description"
                   rows="6"
