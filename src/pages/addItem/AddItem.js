@@ -1,25 +1,48 @@
 import React from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const AddItem = () => {
+  const [imgBBdisplayURL, setImgBBdisplayURL] = useState("");
   const { register, handleSubmit, error } = useForm();
   const submit = (data) => {
-    console.log(data);
+    // upload image to img bb
+    {
+      const formData = new FormData();
+      formData.append("image", data.photo[0]);
+      const url = `https://api.imgbb.com/1/upload?key=262e7d4ee7c68ebbd1d0f36491313d7a`;
+      if (data?.photo[0]) {
+        fetch(url, {
+          method: "POST",
+          body: formData,
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            setImgBBdisplayURL(result.data.display_url);
 
-    fetch("http://localhost:8080/product", {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-      });
+            {
+              const newDataWithImgBB = { ...data, photo: imgBBdisplayURL };
+              console.log(newDataWithImgBB);
+              fetch("http://localhost:8080/product", {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newDataWithImgBB),
+              })
+                .then(function (response) {
+                  return response.json();
+                })
+                .then(function (data) {
+                  console.log(data);
+                });
+            }
+          });
+      }
+    }
+    // upload all data with new imgbb link to database
+    // eslint-disable-next-line no-lone-blocks
   };
   return (
     <div>
@@ -36,7 +59,7 @@ const AddItem = () => {
             <fieldset className="p-6 lg:w-1/2 w-full border border-dashed rounded-md shadow-md dark:bg-gray-900">
               <div className="col-span-full">
                 <input
-                  {...register("photoURL")}
+                  {...register("photo", { required: true })}
                   type="file"
                   placeholder=""
                   className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-indigo-400 border border-gray-400 dark:text-gray-900"
@@ -44,8 +67,8 @@ const AddItem = () => {
               </div>
               <div className="max-w-xs mx-auto rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
                 <img
-                  src="https://cdn.dribbble.com/users/731646/screenshots/16592987/add_product_page_4x.png"
-                  alt=""
+                  src={imgBBdisplayURL}
+                  alt="selectedImage"
                   className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500"
                 />
               </div>
@@ -53,7 +76,7 @@ const AddItem = () => {
             <fieldset className="p-6 lg:w-1/2 w-full border border-dashed rounded-md shadow-md dark:bg-gray-900 space-y-5">
               <div className="col-span-full">
                 <input
-                  {...register("productName")}
+                  {...register("productName", { required: true })}
                   id="product-name"
                   type="text"
                   placeholder="Product Name"
@@ -62,7 +85,7 @@ const AddItem = () => {
               </div>
               <div className="col-span-full flex space-x-5">
                 <input
-                  {...register("quantity", { min: 0 })}
+                  {...register("quantity", { min: 0, required: true })}
                   id="quantity"
                   type="number"
                   placeholder="Quantity"
@@ -70,7 +93,7 @@ const AddItem = () => {
                 />
                 <input
                   id="price"
-                  {...register("price", { min: 0 })}
+                  {...register("price", { min: 0, required: true })}
                   type="number"
                   placeholder="Price"
                   className="w-full p-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-indigo-400 border border-gray-400 dark:text-gray-900"
@@ -79,7 +102,7 @@ const AddItem = () => {
               <div className="col-span-full">
                 <input
                   id="supplier"
-                  {...register("supplier")}
+                  {...register("supplier", { required: true })}
                   type="text"
                   placeholder="Supplier Name"
                   className="w-full p-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-indigo-400 border border-gray-400 dark:text-gray-500"
@@ -88,7 +111,7 @@ const AddItem = () => {
               <div className="col-span-full">
                 <textarea
                   id="description"
-                  {...register("description")}
+                  {...register("description", { required: true })}
                   type="text"
                   placeholder="Description"
                   rows="6"
