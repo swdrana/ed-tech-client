@@ -5,6 +5,21 @@ const AddItem = () => {
   const { register, handleSubmit, error } = useForm();
   const submit = (data) => {
     console.log(data);
+
+    fetch("http://localhost:8080/product", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+      });
   };
   return (
     <div>
@@ -47,7 +62,7 @@ const AddItem = () => {
               </div>
               <div className="col-span-full flex space-x-5">
                 <input
-                  {...register("quantity")}
+                  {...register("quantity", { min: 0 })}
                   id="quantity"
                   type="number"
                   placeholder="Quantity"
@@ -55,7 +70,7 @@ const AddItem = () => {
                 />
                 <input
                   id="price"
-                  {...register("price")}
+                  {...register("price", { min: 0 })}
                   type="number"
                   placeholder="Price"
                   className="w-full p-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-indigo-400 border border-gray-400 dark:text-gray-900"
@@ -73,7 +88,7 @@ const AddItem = () => {
               <div className="col-span-full">
                 <textarea
                   id="description"
-                  {...register('description')}
+                  {...register("description")}
                   type="text"
                   placeholder="Description"
                   rows="6"
