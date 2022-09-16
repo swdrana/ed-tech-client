@@ -53,6 +53,13 @@ const Navber = () => {
               ) : (
                 ""
               )}
+            {user ? (
+                <li>
+                  <Link to={"/manage"}>Manage</Link>
+                </li>
+              ) : (
+                ""
+              )}
               <li>
                 <Link to={"/blog"}>Blog</Link>
               </li>

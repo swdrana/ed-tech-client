@@ -9,6 +9,8 @@ import AddItem from "./pages/addItem/AddItem";
 import Home from "./pages/home/Home";
 import RequireAuth from "./pages/auth/RequireAuth";
 import RequireNonAuth from "./pages/auth/RequireNonAuth";
+import ManageItem from "./pages/manageItem/ManageItem";
+import UpdateItem from "./pages/updateItem/UpdateItem";
 
 function App() {
   return (
@@ -21,6 +23,22 @@ function App() {
           element={
             <RequireAuth>
               <AddItem />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/manage"
+          element={
+            <RequireAuth>
+              <ManageItem />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/update/:id"
+          element={
+            <RequireAuth>
+              <UpdateItem/>
             </RequireAuth>
           }
         />

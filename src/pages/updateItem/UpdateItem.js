@@ -1,11 +1,10 @@
-import React from "react";
-import { useState } from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import Loading from "../../components/shared/Loading";
 import auth from "../auth/firebase.init";
-
-const AddItem = () => {
+const updateItem = () => {
   const [user, loading] = useAuthState(auth);
   const [imgBBdisplayURL, setImgBBdisplayURL] = useState("");
   const { register, handleSubmit, error } = useForm();
@@ -54,9 +53,10 @@ const AddItem = () => {
       }
     }
   };
+  if (loading) return <Loading />;
   return (
     <div>
-      <h2 className="text-3xl text-center">Add Product</h2>
+      <h2 className="text-3xl text-center">Update Product</h2>
       <p className="text-center text-stone-400">
         Please fill this form carefully
       </p>
@@ -143,4 +143,4 @@ const AddItem = () => {
   );
 };
 
-export default AddItem;
+export default updateItem;
