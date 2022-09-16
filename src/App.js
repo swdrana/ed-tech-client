@@ -7,6 +7,7 @@ import Footer from "./components/shared/Footer";
 import Navber from "./components/shared/Navber";
 import AddItem from "./pages/addItem/AddItem";
 import Home from "./pages/home/Home";
+import RequireAuth from "./pages/auth/RequireAuth";
 
 function App() {
   return (
@@ -14,7 +15,14 @@ function App() {
       <Navber />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/add-item" element={<AddItem />} />
+        <Route
+          path="/add-item"
+          element={
+            <RequireAuth>
+              <AddItem />
+            </RequireAuth>
+          }
+        />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="/blog" element={<Blog />} />

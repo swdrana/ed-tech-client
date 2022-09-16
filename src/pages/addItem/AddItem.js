@@ -7,6 +7,7 @@ const AddItem = () => {
   const { register, handleSubmit, error } = useForm();
   const submit = (data) => {
     // upload image to img bb
+    // eslint-disable-next-line no-lone-blocks
     {
       const formData = new FormData();
       formData.append("image", data.photo[0]);
@@ -21,6 +22,8 @@ const AddItem = () => {
             setImgBBdisplayURL(result.data.display_url);
 
             {
+              // upload all data with new imgbb link to database
+              // eslint-disable-next-line no-lone-blocks
               const newDataWithImgBB = { ...data, photo: imgBBdisplayURL };
               console.log(newDataWithImgBB);
               fetch("http://localhost:8080/product", {
@@ -41,8 +44,6 @@ const AddItem = () => {
           });
       }
     }
-    // upload all data with new imgbb link to database
-    // eslint-disable-next-line no-lone-blocks
   };
   return (
     <div>

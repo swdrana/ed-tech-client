@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
@@ -10,6 +10,8 @@ import { useState } from "react";
 import Loading from "../../components/shared/Loading";
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location?.state?.from?.pathname || '/';
   const [signInWithGoogle, userGoogle, loadingGoogle, errorGoogle] =
     useSignInWithGoogle(auth);
   const [sendPasswordResetEmail, sending, errorReset] =
@@ -23,12 +25,12 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   if (loading || loadingGoogle || sending) {
-    return <Loading/>
+    return <Loading />;
   } else if (errorGoogle || error || errorReset) {
     console.error(errorGoogle?.message || error?.message || errorReset.message);
   } else if (user || userGoogle) {
-    console.log(user);
-    navigate("/");
+    console.log(user || userGoogle);
+    navigate(from, {replace:true});
   }
   const handelSubmit = (e) => {
     e.preventDefault();
