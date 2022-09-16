@@ -2,9 +2,12 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import Loading from "../../components/shared/Loading";
 import auth from "../auth/firebase.init";
 const updateItem = () => {
+  const { id } = useParams();
+  console.log(id);
   const [user, loading] = useAuthState(auth);
   const [imgBBdisplayURL, setImgBBdisplayURL] = useState("");
   const { register, handleSubmit, error } = useForm();
