@@ -1,17 +1,29 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import Loading from "../../components/shared/Loading";
 import auth from "../auth/firebase.init";
 const updateItem = () => {
+  // get id from url and fetch data based on that id
   const { id } = useParams();
-  console.log(id);
+  const [product, setProduct] = useState({});
+  useEffect(() => {
+    fetch(`http://localhost:8080/product/${id}`)
+      .then((res) => res.json())
+      .then((data) => setProduct(data));
+  }, [product]);
+  useEffect(()=>{
+    // setImgBBdisplayURL(product.photo)
+    // console.log(imgBBdisplayURL);
+  },[])
+
   const [user, loading] = useAuthState(auth);
   const [imgBBdisplayURL, setImgBBdisplayURL] = useState("");
   const { register, handleSubmit, error } = useForm();
   if (loading) return <Loading />;
+
   const submit = (data) => {
     // upload image to img bb
     // eslint-disable-next-line no-lone-blocks
@@ -27,29 +39,32 @@ const updateItem = () => {
           .then((res) => res.json())
           .then((result) => {
             setImgBBdisplayURL(result.data.display_url);
-
+            // console.log(imgBBdisplayURL);
             {
               // upload all data with new imgbb link to database
               // eslint-disable-next-line no-lone-blocks
               const newDataWithImgBB = {
                 ...data,
-                photo: imgBBdisplayURL,
+                photo: result.data.display_url,
                 email: user.email,
               };
-              console.log(newDataWithImgBB);
-              fetch("http://localhost:8080/product", {
-                method: "POST",
-                headers: {
-                  Accept: "application/json",
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newDataWithImgBB),
-              })
-                .then(function (response) {
-                  return response.json();
-                })
-                .then(function (data) {
+              console.log(newDataWithImgBB); 
+              
+              // send updated product to database
+              fetch(`http://localhost:8080/product/update/${id}`,
+                {
+                  method: "PUT",
+                  headers: {
+                    "content-type": "application/json",
+                  },
+                  body: JSON.stringify(newDataWithImgBB),
+                }
+              )
+                .then((res) => res.json())
+                .then((data) => {
                   console.log(data);
+                  // toast.info("Updated Done!", { theme: "colored" });      
+                  // e.target.reset();
                 });
             }
           });
@@ -80,7 +95,7 @@ const updateItem = () => {
               </div>
               <div className="max-w-xs mx-auto rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
                 <img
-                  src={imgBBdisplayURL}
+                  src={product.photo}
                   alt="selectedImage"
                   className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500"
                 />
@@ -91,6 +106,7 @@ const updateItem = () => {
                 <input
                   {...register("productName", { required: true })}
                   id="product-name"
+                  defaultValue={product.productName}
                   type="text"
                   placeholder="Product Name"
                   className="w-full p-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-indigo-400 border border-gray-400 dark:text-gray-500"
@@ -101,6 +117,7 @@ const updateItem = () => {
                   {...register("quantity", { min: 0, required: true })}
                   id="quantity"
                   type="number"
+                  defaultValue={product.quantity}
                   placeholder="Quantity"
                   className="w-full p-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-indigo-400 border border-gray-400 dark:text-gray-900"
                 />
@@ -109,6 +126,7 @@ const updateItem = () => {
                   {...register("price", { min: 0, required: true })}
                   type="number"
                   placeholder="Price"
+                  defaultValue={product.price}
                   className="w-full p-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-indigo-400 border border-gray-400 dark:text-gray-900"
                 />
               </div>
@@ -118,6 +136,7 @@ const updateItem = () => {
                   {...register("supplier", { required: true })}
                   type="text"
                   placeholder="Supplier Name"
+                  defaultValue={product.supplier}
                   className="w-full p-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-indigo-400 border border-gray-400 dark:text-gray-500"
                 />
               </div>
@@ -127,6 +146,7 @@ const updateItem = () => {
                   {...register("description", { required: true })}
                   type="text"
                   placeholder="Description"
+                  defaultValue={product.description}
                   rows="6"
                   className="w-full p-1 rounded-md focus:ring focus:ring-opacity-75 focus:ring-indigo-400 border border-gray-400 dark:text-gray-500"
                 ></textarea>
@@ -136,7 +156,7 @@ const updateItem = () => {
           <div className=" mx-auto w-full flex justify-center mt-10">
             <input
               type="submit"
-              value="Add"
+              value="Update"
               className=" btn btn-warning w-52"
             />
           </div>
