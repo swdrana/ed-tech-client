@@ -8,6 +8,7 @@ import Navber from "./components/shared/Navber";
 import AddItem from "./pages/addItem/AddItem";
 import Home from "./pages/home/Home";
 import RequireAuth from "./pages/auth/RequireAuth";
+import RequireNonAuth from "./pages/auth/RequireNonAuth";
 
 function App() {
   return (
@@ -23,8 +24,22 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
+        <Route
+          path="login"
+          element={
+            <RequireNonAuth>
+              <Login />
+            </RequireNonAuth>
+          }
+        />
+        <Route
+          path="signup"
+          element={
+            <RequireNonAuth>
+              <Signup />
+            </RequireNonAuth>
+          }
+        />
         <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
       </Routes>

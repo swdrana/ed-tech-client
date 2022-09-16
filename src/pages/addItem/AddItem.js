@@ -1,10 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import Loading from "../../components/shared/Loading";
+import auth from "../auth/firebase.init";
 
 const AddItem = () => {
+  const [user, loading] = useAuthState(auth)
   const [imgBBdisplayURL, setImgBBdisplayURL] = useState("");
   const { register, handleSubmit, error } = useForm();
+  if (loading) return <Loading/>
   const submit = (data) => {
     // upload image to img bb
     // eslint-disable-next-line no-lone-blocks
@@ -24,7 +29,7 @@ const AddItem = () => {
             {
               // upload all data with new imgbb link to database
               // eslint-disable-next-line no-lone-blocks
-              const newDataWithImgBB = { ...data, photo: imgBBdisplayURL };
+              const newDataWithImgBB = { ...data, photo: imgBBdisplayURL, email: user.email };
               console.log(newDataWithImgBB);
               fetch("http://localhost:8080/product", {
                 method: "POST",
